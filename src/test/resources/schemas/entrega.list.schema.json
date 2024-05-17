@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "cpfEntregador": {
+          "type": "string"
+        },
+        "cepRaiz": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "pedidos": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "idCliente": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "idCliente"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "idCliente": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "idCliente"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "idCliente": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "id",
+                "idCliente"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "cpfEntregador",
+        "cepRaiz",
+        "status",
+        "pedidos"
+      ]
+    }
+  ]
+}
