@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "e843fe9f-9a0d-4121-881c-0413be336155",
+		"name": "1 - MappinCliente",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4274444"
+	},
+	"item": [
+		{
+			"name": "Cliente - findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlCliente}}",
+					"host": [
+						"{{urlCliente}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cliente - findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlCliente}}/{{idCliente}}",
+					"host": [
+						"{{urlCliente}}"
+					],
+					"path": [
+						"{{idCliente}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cliente - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();\r",
+							"postman.clearEnvironmentVariable(\"idCliente\");\r",
+							"postman.setEnvironmentVariable(\"idCliente\", res.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Anderson Wagner\",\r\n    \"cpf\": \"04539925016\",\r\n    \"endereco\": {\r\n        \"rua\" : \"rua dos projetos\",\r\n        \"numero\" : \"123\",\r\n        \"cep\" : \"41234123\",\r\n        \"cidade\" : \"São Paulo/SP/Brasil\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlCliente}}",
+					"host": [
+						"{{urlCliente}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cliente - update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Anderson Waaaaaagner\",\r\n    \"cpf\": \"04539925016\",\r\n    \"endereco\": {\r\n        \"rua\" : \"rua dos projetos\",\r\n        \"numero\" : \"123\",\r\n        \"cep\" : \"41234123\",\r\n        \"cidade\" : \"São Paulo/SP/Brasil\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlCliente}}/{{idCliente}}",
+					"host": [
+						"{{urlCliente}}"
+					],
+					"path": [
+						"{{idCliente}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cliente - delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Anderson Wagner\",\r\n    \"cpf\": \"04539925016\",\r\n    \"endereco\": {\r\n        \"rua\" : \"rua dos projetos\",\r\n        \"numero\" : \"123\",\r\n        \"cep\" : \"41234123\",\r\n        \"cidade\" : \"São Paulo/SP/Brasil\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlCliente}}/{{idCliente}}",
+					"host": [
+						"{{urlCliente}}"
+					],
+					"path": [
+						"{{idCliente}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

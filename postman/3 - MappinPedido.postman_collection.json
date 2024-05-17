@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "998edbba-6056-4c21-92db-5f3cdb1a0882",
+		"name": "3 - MappinPedido",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4274444"
+	},
+	"item": [
+		{
+			"name": "Pedido - findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlPedido}}",
+					"host": [
+						"{{urlPedido}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedido - findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlPedido}}/{{idPedido}}",
+					"host": [
+						"{{urlPedido}}"
+					],
+					"path": [
+						"{{idPedido}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedido - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();\r",
+							"postman.clearEnvironmentVariable(\"idPedido\");\r",
+							"postman.setEnvironmentVariable(\"idPedido\", res.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"quantidadeAleatoria\", _.random(3, 7))"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idCliente\": \"{{idCliente}}\",\r\n  \"itens\": [\r\n    {\r\n      \"idProduto\": \"{{idProduto}}\",\r\n      \"quantidade\": {{quantidadeAleatoria}}\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlPedido}}",
+					"host": [
+						"{{urlPedido}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedido - updatePagamentoRealizado",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"PAGAMENTO_REALIZADO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlPedido}}/{{idPedido}}",
+					"host": [
+						"{{urlPedido}}"
+					],
+					"path": [
+						"{{idPedido}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedido - updateAguardandoEntrega",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"AGUARDANDO_ENTREGA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlPedido}}/{{idPedido}}",
+					"host": [
+						"{{urlPedido}}"
+					],
+					"path": [
+						"{{idPedido}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedido - delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Anderson Wagner\",\r\n    \"cpf\": \"04539925016\",\r\n    \"endereco\": {\r\n        \"rua\" : \"rua dos projetos\",\r\n        \"numero\" : \"123\",\r\n        \"cep\" : \"41234123\",\r\n        \"cidade\" : \"São Paulo/SP/Brasil\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlPedido}}/{{idPedido}}",
+					"host": [
+						"{{urlPedido}}"
+					],
+					"path": [
+						"{{idPedido}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

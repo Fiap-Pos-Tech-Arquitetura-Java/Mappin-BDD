@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "c277f91e-0280-44b7-ae07-7c0b3a4493f8",
+		"name": "4 - MappinEntrega",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4274444"
+	},
+	"item": [
+		{
+			"name": "Entrega - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();\r",
+							"postman.clearEnvironmentVariable(\"idEntrega\");\r",
+							"postman.setEnvironmentVariable(\"idEntrega\", res[0].id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlEntrega}}",
+					"host": [
+						"{{urlEntrega}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entrega - update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"ENTREGUE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlEntrega}}/{{idEntrega}}",
+					"host": [
+						"{{urlEntrega}}"
+					],
+					"path": [
+						"{{idEntrega}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entrega - findAll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idCliente\": \"{{idCliente}}\",\r\n  \"itens\": [\r\n    {\r\n      \"idProduto\": \"{{idProduto}}\",\r\n      \"quantidade\": 5\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlEntrega}}",
+					"host": [
+						"{{urlEntrega}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

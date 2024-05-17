@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "672a15b3-c7cf-4593-a7a8-6c0bd37003d5",
+		"name": "2 - MappinProduto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4274444"
+	},
+	"item": [
+		{
+			"name": "Produto - findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlProduto}}",
+					"host": [
+						"{{urlProduto}}"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "100",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produto - findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlProduto}}/{{idProduto}}",
+					"host": [
+						"{{urlProduto}}"
+					],
+					"path": [
+						"{{idProduto}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produto - create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();\r",
+							"postman.clearEnvironmentVariable(\"idProduto\");\r",
+							"postman.setEnvironmentVariable(\"idProduto\", res.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require(\"moment\")\r",
+							"pm.environment.set(\"timestamp\", moment().format('YYYY-MM-DDTHH:mm:ss.SSSS') );"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Old Specke Hein\",\r\n    \"quantidade\": 312,\r\n    \"preco\": 312.54,\r\n    \"dataAtualizacao\" : \"{{timestamp}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlProduto}}",
+					"host": [
+						"{{urlProduto}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produto - loteManual",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"contentType": "",
+							"type": "file",
+							"src": "postman-cloud:///1ef073ef-3ffa-4940-be00-a72b6c0819f3"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/mappin/lote/execucaoManual",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"mappin",
+						"lote",
+						"execucaoManual"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produto - loteAgendada",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"contentType": "",
+							"type": "file",
+							"src": "postman-cloud:///1ef073ef-3ffa-4940-be00-a72b6c0819f3"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/mappin/lote/execucaoAgendada",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"mappin",
+						"lote",
+						"execucaoAgendada"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produto - update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Old Specke Hein !!!\",\r\n    \"quantidade\": 12,\r\n    \"preco\": 123.54\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlProduto}}/{{idProduto}}",
+					"host": [
+						"{{urlProduto}}"
+					],
+					"path": [
+						"{{idProduto}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Produto - delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Anderson Wagner\",\r\n    \"cpf\": \"04539925016\",\r\n    \"endereco\": {\r\n        \"rua\" : \"rua dos projetos\",\r\n        \"numero\" : \"123\",\r\n        \"cep\" : \"41234123\",\r\n        \"cidade\" : \"São Paulo/SP/Brasil\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlProduto}}/{{idProduto}}",
+					"host": [
+						"{{urlProduto}}"
+					],
+					"path": [
+						"{{idProduto}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
